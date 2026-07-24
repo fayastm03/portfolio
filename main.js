@@ -48,24 +48,23 @@ function initNavbarScroll() {
 
   const handleScroll = () => {
     if (window.scrollY > 40) {
-      navbar.style.backgroundColor = 'rgba(9, 10, 12, 0.95)';
-      navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+      navbar.style.backgroundColor = 'rgba(213, 207, 190, 0.96)'; // Keep sand background
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.04)';
     } else {
-      navbar.style.backgroundColor = 'rgba(9, 10, 12, 0.85)';
+      navbar.style.backgroundColor = 'rgba(213, 207, 190, 0.85)';
       navbar.style.boxShadow = 'none';
     }
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // Run once in case user loads page scrolled down
+  handleScroll(); // Run once in case page loads scrolled down
 }
 
 /**
  * 3. Scroll Reveal Animations
- * Uses IntersectionObserver to trigger smooth transitions.
+ * Snappy, minimalist animations inspired by high-end websites.
  */
 function initScrollAnimations() {
-  // Add animation classes dynamically to keep HTML clean
   const animTargets = [
     '#hero .hero-badge',
     '#hero .hero-title',
@@ -75,19 +74,20 @@ function initScrollAnimations() {
     '.section-title',
     '.section-divider',
     '.project-item',
+    '.about-photo-wrapper',
     '.about-intro',
     '.stat-card',
     '.skills-column',
     '.contact-board'
   ];
 
-  // Inject structural styling for transition states
+  // Inject structural styling for minimal, snappy transitions (only 10px translate)
   const style = document.createElement('style');
   style.innerHTML = `
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(10px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .scroll-reveal.revealed {
       opacity: 1;
@@ -99,20 +99,18 @@ function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Add a slight stagger delay for multiple items entering at once
         const delay = entry.target.dataset.delay || 0;
         setTimeout(() => {
           entry.target.classList.add('revealed');
         }, delay);
-        observer.unobserve(entry.target); // Only animate once
+        observer.unobserve(entry.target); // Animate once
       }
     });
   }, {
     threshold: 0.05,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -30px 0px'
   });
 
-  // Query and observe targets
   animTargets.forEach((selector) => {
     const elements = document.querySelectorAll(selector);
     elements.forEach((el, index) => {
@@ -120,7 +118,7 @@ function initScrollAnimations() {
       
       // Calculate stagger for grids
       if (selector === '.stat-card' || selector === '.skills-column' || selector === '.project-item') {
-        el.dataset.delay = (index % 3) * 100; // 100ms delay increments
+        el.dataset.delay = (index % 3) * 80; // 80ms increments
       }
       
       observer.observe(el);
