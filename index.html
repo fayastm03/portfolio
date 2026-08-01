@@ -3,378 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fayas T M &mdash; Software Developer</title>
-  <meta name="description" content="Portfolio of Fayas T M, a software developer specializing in high-performance Flutter mobile apps, MERN stack web applications, and real-time WebSocket systems.">
-  
-  <!-- Premium Fonts -->
+  <title>Fayas T M — Software Developer</title>
+  <meta name="description" content="Portfolio of Fayas T M, a software developer building thoughtful mobile and full-stack products.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">fayas.dev</a>
+      <a href="#hero" class="nav-logo">fayas.dev</a>
       <div class="nav-links">
-        <a href="#work">Selected Work</a>
-        <a href="#about">About</a>
-        <a href="#skills">Capabilities</a>
-        <a href="#contact" class="nav-cta">Get in Touch</a>
+        <a href="#work">Work</a><a href="#about">About</a><a href="#skills">Skills</a>
       </div>
-      <div class="nav-time" id="local-time-indicator">
-        <span class="pulse-indicator"></span>
-        <span class="time-label">Kannur, IN:</span>
-        <span id="current-time">00:00:00 AM</span>
-      </div>
+      <a href="#contact" class="nav-contact">Let’s talk <span>↗</span></a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="hero">
-    <div class="hero-container">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span class="badge-text">Available for Internships & Projects</span>
-      </div>
-      <h1 class="hero-title">
-        Engineering refined <br>
-        <span class="serif-title">mobile & web systems.</span>
-      </h1>
-      <p class="hero-description">
-        I am Fayas T M, a software developer focused on building stable, highly performant applications. Information Science & Engineering graduate, specializing in <strong>Flutter mobile architectures</strong> and <strong>MERN stack web engineering</strong>.
-      </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-primary">See Selected Work</a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Selected Work -->
-  <section id="work">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Case Studies</span>
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="projects-list">
-        
-        <!-- Project 1: Torque Moto Tech (Featured MERN Stack Project) -->
-        <article class="project-item featured-project no-visuals">
-          <div class="project-info">
-            <div class="project-header">
-              <span class="project-badge">ACTIVE PRODUCTION PROJECT</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3 class="project-title">Torque Moto Tech</h3>
-            <p class="project-role">Full-Stack Developer & System Designer</p>
-            <p class="project-desc">
-              A premium digital gateway and business management platform built for Torque MotoTech in Kannur. Integrates service booking schedulers, used motorcycle inventory lists, and catalog navigation, providing a seamless customer interface.
-            </p>
-            
-            <div class="project-tech-stack">
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Express.js</span>
-              <span class="tech-tag">React.js</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Tailwind CSS</span>
-            </div>
-            
-            <div class="project-spec-sheet">
-              <div class="spec-item">
-                <span class="spec-label">Platform Type</span>
-                <span class="spec-val">Full-Stack MERN Application</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Key Features</span>
-                <span class="spec-val">Fleet Catalog, Appointment Scheduling</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Live Service</span>
-                <span class="spec-val"><a href="https://torquemototechkannur.vercel.app/" target="_blank" class="spec-link">torquemototechkannur.vercel.app ↗</a></span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project Grid for other projects -->
-        <div class="projects-grid">
-          
-          <!-- Project 2: Real-time Chat App (New) -->
-          <article class="project-item standard-project no-visuals">
-            <div class="project-info">
-              <div class="project-header">
-                <span class="project-badge">REAL-TIME SYSTEM</span>
-                <span class="project-year">2026</span>
-              </div>
-              <h3 class="project-title">Real-time Chat Application</h3>
-              <p class="project-desc">
-                A low-latency chat client and server network utilizing WebSockets for real-time bidirectional communication. Supports dynamic client joins, active user metrics, typing indicators, and distinct socket namespace rooms.
-              </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Dart</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Socket.io</span>
-                <span class="tech-tag">Express.js</span>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Project 3: E-Commerce App -->
-          <article class="project-item standard-project no-visuals">
-            <div class="project-info">
-              <div class="project-header">
-                <span class="project-badge">MOBILE DEVELOPMENT</span>
-                <span class="project-year">2025</span>
-              </div>
-              <h3 class="project-title">E-Commerce Application</h3>
-              <p class="project-desc">
-                A features-complete shopping interface featuring dynamic product displays, user cart controls, state management powered by Provider, and a secure Node.js backend.
-              </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Dart</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Provider</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4: Car Rental -->
-          <article class="project-item standard-project no-visuals">
-            <div class="project-info">
-              <div class="project-header">
-                <span class="project-badge">DATABASE UTILITY</span>
-                <span class="project-year">2025</span>
-              </div>
-              <h3 class="project-title">Car Rental System</h3>
-              <p class="project-desc">
-                A localized vehicle reservation system mapping active availability, renter profiles, and automatic booking summaries using Firebase database layers.
-              </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">Dart</span>
-                <span class="tech-tag">Cloud Firestore</span>
-              </div>
-            </div>
-          </article>
-
+  <main>
+    <header id="hero">
+      <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+      <div class="hero-container">
+        <div class="hero-topline reveal"><span class="availability-dot"></span><span>Available for internships & freelance projects</span><span class="hero-location">Based in Kannur, India</span></div>
+        <h1 class="hero-title reveal">Hi, I’m Fayas <em>T M.</em></h1>
+        <div class="hero-bottom reveal">
+          <p>Building digital products that feel effortless—through polished Flutter experiences and dependable full-stack systems.</p>
+          <a href="#work" class="circle-link" aria-label="See selected work"><span>↓</span></a>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="hero-index" aria-hidden="true"><span>Scroll to explore</span><span>01 — 05</span></div>
+    </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image-column">
-          <div class="about-photo-wrapper">
-            <img src="fayas.jpg" alt="Fayas T M" class="about-photo">
-          </div>
-        </div>
-        
-        <div class="about-intro">
-          <span class="section-subtitle">Biography</span>
-          <h2 class="about-title">A programmer dedicated to engineering clean and functional software.</h2>
-          <div class="section-divider"></div>
-          <p class="about-para">
-            I am Fayas, a B.E. Graduate in <strong>Information Science & Engineering</strong> from <em>Yenepoya Institute of Technology, Moodbidri, Karnataka</em>.
-          </p>
-          <p class="about-para">
-            My engineering philosophy centers on clean structure and reliable architecture. Whether architecting cross-platform mobile apps in Dart/Flutter, building real-time socket channels using WebSockets, or writing database schemas for MERN systems, I prioritize scalable and robust code.
-          </p>
-          
-          <div class="about-stats">
-            <div class="stat-card">
-              <span class="stat-num">01</span>
-              <h4 class="stat-title">Academic Pathway</h4>
-              <p class="stat-text">B.E. Information Science (Graduate)</p>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">04+</span>
-              <h4 class="stat-title">Shipped Projects</h4>
-              <p class="stat-text">Full systems deployed online</p>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">05</span>
-              <h4 class="stat-title">Databases & Web</h4>
-              <p class="stat-text">Postgres, Mongo, WebSockets</p>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">100%</span>
-              <h4 class="stat-title">Human Crafted</h4>
-              <p class="stat-text">Clean, custom visual layout</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Capabilities & Skills -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Technical Vector</span>
-        <h2 class="section-title">Core Capabilities</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skills-column">
-          <h3 class="skills-col-title">Mobile Engineering</h3>
-          <ul class="skills-list-items">
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Flutter & Dart Engine</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 92%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">State Management (Provider)</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 88%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Firebase Systems (Auth/Firestore)</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 90%;"></span></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="skills-column">
-          <h3 class="skills-col-title">Full-Stack Systems</h3>
-          <ul class="skills-list-items">
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">MERN Stack (React, Node, Express)</span>
-                <span class="skill-item-level">Intermediate</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 85%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Database Systems (Postgres, Mongo)</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 86%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">WebSocket Protocols & APIs</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 84%;"></span></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="skills-column">
-          <h3 class="skills-col-title">Languages & Workflows</h3>
-          <ul class="skills-list-items">
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Java, C/C++ Systems</span>
-                <span class="skill-item-level">Intermediate</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 75%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Web Foundations (HTML5, CSS3, ES6)</span>
-                <span class="skill-item-level">Intermediate</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 80%;"></span></div>
-            </li>
-            <li>
-              <div class="skill-name-row">
-                <span class="skill-item-name">Version Control (Git & CLI)</span>
-                <span class="skill-item-level">Advanced</span>
-              </div>
-              <div class="skill-bar"><span class="skill-bar-fill" style="width: 90%;"></span></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-board">
-        <div class="contact-header">
-          <span class="section-subtitle">Communication</span>
-          <h2 class="contact-headline">Initiate a project or collaboration.</h2>
-          <p class="contact-sub">
-            Looking for freelance engagements, internships, or engineering roles. Let's build stable software together.
-          </p>
-        </div>
-        
-        <div class="contact-channels">
-          <a href="mailto:fayastm03@gmail.com" class="channel-card">
-            <div class="channel-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            </div>
-            <div class="channel-text">
-              <span class="channel-label">Email Interface</span>
-              <span class="channel-val">fayastm03@gmail.com</span>
-            </div>
-            <span class="channel-arrow">→</span>
-          </a>
-          
-          <a href="tel:+917561877400" class="channel-card">
-            <div class="channel-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            </div>
-            <div class="channel-text">
-              <span class="channel-label">Voice Channel</span>
-              <span class="channel-val">+91 75618 77400</span>
-            </div>
-            <span class="channel-arrow">→</span>
-          </a>
-
-          <div class="social-links-grid">
-            <a href="https://github.com/fayastm03" target="_blank" class="social-link-item">
-              <span>GitHub</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+    <section id="work">
+      <div class="container">
+        <div class="section-kicker reveal"><span>(01)</span><span>Selected work</span></div>
+        <div class="work-intro reveal"><h2>A few things I’ve<br><em>made recently.</em></h2><p>Thoughtful interfaces, strong foundations, and systems that work well in the real world.</p></div>
+        <div class="projects-list">
+          <article class="project-card project-card-featured reveal">
+            <a class="project-visual torque-visual" href="https://torquemototechkannur.vercel.app/" target="_blank" rel="noreferrer" aria-label="Visit Torque Moto Tech">
+              <div class="visual-browser"><div class="browser-dots"><i></i><i></i><i></i></div><span>Torque Moto Tech</span><b>↗</b></div>
+              <div class="motorcycle"><div class="bike-wheel wheel-left"></div><div class="bike-wheel wheel-right"></div><div class="bike-frame"></div><div class="bike-tank"></div><div class="bike-seat"></div><div class="bike-handle"></div></div>
+              <span class="visual-word">TORQUE</span>
             </a>
-            <a href="https://in.linkedin.com/in/fayas-t-m-098467322/" target="_blank" class="social-link-item">
-              <span>LinkedIn</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
-            </a>
+            <div class="project-copy"><div class="project-meta"><span>01 / 04</span><span>2026</span></div><h3>Torque Moto Tech</h3><p>Premium digital gateway for a motorcycle business—bringing inventory, service appointments, and product discovery into one customer-facing platform.</p><div class="project-footer"><span>MERN stack · Tailwind CSS</span><a href="https://torquemototechkannur.vercel.app/" target="_blank" rel="noreferrer">View live site <span>↗</span></a></div></div>
+          </article>
+          <div class="project-pair">
+            <article class="project-card reveal"><div class="project-visual chat-visual"><div class="chat-sidebar"><span></span><span></span><span></span><span></span></div><div class="chat-window"><div class="chat-head"># general <i></i></div><div class="message incoming">Hey Fayas, is the room live?</div><div class="message outgoing">Yes — you’re connected ⚡</div><div class="typing"><b></b><b></b><b></b></div></div></div><div class="project-copy"><div class="project-meta"><span>02 / 04</span><span>2026</span></div><h3>Real-time Chat</h3><p>Low-latency messaging with live rooms, typing signals, and active-user presence.</p><div class="project-footer"><span>Flutter · Socket.io</span><span class="project-arrow">↗</span></div></div></article>
+            <article class="project-card reveal"><div class="project-visual store-visual"><div class="phone"><div class="phone-notch"></div><div class="phone-title">Discover</div><div class="product-row"><i></i><span>Wireless Headphones<br><b>$129.00</b></span></div><div class="product-row"><i></i><span>Everyday Sneakers<br><b>$89.00</b></span></div><div class="phone-nav"><b></b><b></b><b></b></div></div><span class="float-tag">Cart (2)</span></div><div class="project-copy"><div class="project-meta"><span>03 / 04</span><span>2025</span></div><h3>E-commerce App</h3><p>A streamlined shopping experience with clean state management and secure backend services.</p><div class="project-footer"><span>Flutter · Node.js</span><span class="project-arrow">↗</span></div></div></article>
           </div>
+          <article class="project-card project-card-wide reveal"><div class="project-copy"><div class="project-meta"><span>04 / 04</span><span>2025</span></div><h3>Car Rental System</h3><p>A localized reservation product that maps real-time vehicle availability, renter profiles, and booking summaries.</p><div class="project-footer"><span>Flutter · Firebase · Firestore</span><span class="project-arrow">↗</span></div></div><div class="project-visual rental-visual"><div class="rental-card"><span>BOOK A RIDE</span><strong>Explore<br>without limits.</strong><div><i></i><i></i><i></i></div></div><div class="car"><b></b><b></b></div><span class="rental-caption">YOUR NEXT RIDE</span></div></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="container footer-container">
-      <p class="footer-copy">&copy; 2026 Fayas T M. All rights reserved.</p>
-      <p class="footer-location">Kannur &bull; Karnataka &bull; India</p>
-    </div>
-  </footer>
+    <section id="about"><div class="container about-layout"><div class="section-kicker reveal"><span>(02)</span><span>About me</span></div><div class="about-content"><div class="portrait reveal"><img src="fayas.jpg" alt="Fayas T M"><span>FAYAS<br>TM</span></div><div class="about-copy reveal"><h2>I like turning complex ideas into <em>clear, useful products.</em></h2><p>I’m an Information Science & Engineering graduate with a practical love for building. From cross-platform mobile apps to real-time channels and database-backed web products, I care about the small implementation details that make software reliable.</p><a class="text-link" href="#contact">More about my approach <span>↘</span></a></div></div></div></section>
 
-  <!-- Scripts -->
+    <section id="skills"><div class="container"><div class="section-kicker reveal"><span>(03)</span><span>Capabilities</span></div><div class="skills-heading reveal"><h2>The tools behind<br>the <em>thinking.</em></h2></div><div class="skills-grid"><div class="skill-group reveal"><span>01</span><h3>Mobile</h3><p>Flutter, Dart, Provider, Firebase, REST APIs</p></div><div class="skill-group reveal"><span>02</span><h3>Web & Backend</h3><p>React, Node.js, Express, MongoDB, PostgreSQL</p></div><div class="skill-group reveal"><span>03</span><h3>Real-time</h3><p>Socket.io, WebSockets, live presence, event systems</p></div><div class="skill-group reveal"><span>04</span><h3>Workflow</h3><p>Git, GitHub, Figma, responsive UI, deployment</p></div></div></div></section>
+
+    <section id="contact"><div class="container contact-layout"><div class="section-kicker reveal"><span>(04)</span><span>Contact</span></div><div class="contact-content reveal"><p class="contact-pretitle">Have a project, role, or idea in mind?</p><h2>Let’s make<br>something <em>good.</em></h2><a class="email-link" href="mailto:fayastm03@gmail.com">fayastm03@gmail.com <span>↗</span></a><div class="contact-bottom"><a href="https://github.com/fayastm03" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://in.linkedin.com/in/fayas-t-m-098467322/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="tel:+917561877400">+91 75618 77400</a></div></div></div></section>
+  </main>
+  <footer><span>© 2026 Fayas T M</span><span>Designed & built with care</span><a href="#hero">Back to top ↑</a></footer>
   <script src="main.js"></script>
 </body>
 </html>
