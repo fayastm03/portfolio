@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectData = {
     torque: {
       title: 'Torque MotoTech — E-Commerce Platform',
-      image: 'assets/torque-moto-tech-thumbnail.png',
+      image: 'assets/torque-moto-tech-thumbnail.webp',
       desc: 'Built and deployed a production full-stack e-commerce web platform for Torque MotoTech with product browsing, authentication, cart, order management, and an administrative dashboard.',
       features: [
         'Responsive React.js user interface styled with Tailwind CSS',
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     hasi: {
       title: 'Hasi Foods — E-Commerce Storefront',
-      image: 'assets/hasi-foods-preview2.png',
+      image: 'assets/hasi-foods-preview2.webp',
       desc: 'Built a React.js storefront for Hasi Foods, a Kannur-based food and spice brand, with product browsing, product detail pages, brand storytelling, and WhatsApp ordering flows.',
       features: [
         'Responsive React.js and Next.js storefront for desktop and mobile',
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     chat: {
       title: 'Real-Time Chat — Messaging Application',
-      image: 'assets/realtime-chat-iphone-flow.png',
+      image: 'assets/realtime-chat-iphone-flow.webp',
       desc: 'Developed a real-time messaging application with authentication, one-to-one conversations, contact management, and message history.',
       features: [
         'Implemented Socket.IO for real-time text and image messaging',
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     ecommerce: {
       title: 'E-Commerce Mobile Application',
-      image: 'assets/ecommerce_mobile_mockup.png',
+      image: 'assets/ecommerce_mobile_mockup.webp',
       desc: 'Developed a feature-rich Flutter e-commerce application with user authentication, comprehensive product catalog, interactive shopping cart, order management, and secure payment processing.',
       features: [
         'Designed responsive mobile interfaces with reusable Flutter widgets',

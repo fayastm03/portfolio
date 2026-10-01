@@ -1618,7 +1618,7 @@ img {
   
   .hero-section {
     height: auto;
-    min-height: 760px;
+    min-height: max(720px, 100svh);
     padding-top: 72px;
     padding-bottom: 24px;
     display: flex;
@@ -1627,6 +1627,7 @@ img {
   }
   
   .hero-greeting-frame {
+    order: 1;
     position: relative;
     top: auto;
     left: auto;
@@ -1645,18 +1646,22 @@ img {
   }
   
   .hero-photo-wrapper {
-    position: absolute;
-    bottom: 0;
-    height: min(52vh, 420px);
-    width: min(76vw, 300px);
+    order: 4;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    height: 320px;
+    width: 100%;
+    margin-top: 20px;
   }
   
   .hero-mid-badge {
+    order: 2;
     position: relative;
     top: auto;
     left: auto;
     transform: none;
-    margin-top: 96px;
+    margin-top: 72px;
     padding: 0 16px;
     z-index: 4;
   }
@@ -1668,6 +1673,7 @@ img {
   }
   
   .hero-mid-copy {
+    order: 3;
     position: relative;
     top: auto;
     right: auto;
@@ -1679,10 +1685,11 @@ img {
   }
   
   .hero-bottom-left {
+    order: 5;
     position: relative;
     bottom: auto;
     left: auto;
-    margin-top: auto;
+    margin-top: 18px;
     padding: 24px 16px 0;
     max-width: 100%;
     z-index: 4;
@@ -1697,6 +1704,7 @@ img {
   }
   
   .hero-bottom-right {
+    order: 6;
     position: relative;
     bottom: auto;
     right: auto;
@@ -1727,11 +1735,11 @@ img {
   }
 
   .motion-ready .hero-photo-wrapper {
-    transform: translateX(-50%) translateY(18px) scale(1.04);
+    transform: translateY(18px) scale(1.04);
   }
 
   .motion-ready.hero-loaded .hero-photo-wrapper {
-    transform: translateX(-50%) translateY(0) scale(1);
+    transform: translateY(0) scale(1);
   }
   
   .section {
@@ -1858,15 +1866,15 @@ img {
   }
 
   .hero-section {
-    min-height: 720px;
+    min-height: max(720px, 100svh);
   }
 
   .hero-photo-wrapper {
-    height: 360px;
+    height: 300px;
   }
 
   .hero-mid-badge {
-    margin-top: 88px;
+    margin-top: 64px;
   }
 
   .availability-pill {
