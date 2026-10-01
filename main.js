@@ -4,6 +4,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    document.body.classList.add('motion-ready');
+    window.requestAnimationFrame(() => document.body.classList.add('hero-loaded'));
+  }
+
   // --------------------------------------------------------------------------
   // 1. Toast Notification Utility
   // --------------------------------------------------------------------------
@@ -49,6 +56,44 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
+  // Keep the portrait nudge subtle and limited to precise desktop pointers.
+  const heroSection = document.querySelector('.hero-section');
+  const heroPhoto = document.querySelector('.hero-photo');
+  const canUseFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (heroSection && heroPhoto && canUseFinePointer && !prefersReducedMotion) {
+    let pointerFrame = null;
+
+    const resetHeroPhoto = () => {
+      heroPhoto.style.transform = 'translate3d(0, 0, 0)';
+    };
+
+    heroSection.addEventListener('pointermove', (event) => {
+      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+      pointerFrame = window.requestAnimationFrame(() => {
+        const bounds = heroSection.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8;
+        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 6;
+        heroPhoto.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+      });
+    });
+
+    heroSection.addEventListener('pointerleave', resetHeroPhoto);
+  }
+
+  // --------------------------------------------------------------------------
+  // Smooth anchor scrolling
+  // --------------------------------------------------------------------------
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
   // --------------------------------------------------------------------------
   // 3. Mobile Navigation Menu
   // --------------------------------------------------------------------------
@@ -93,16 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const categories = (card.getAttribute('data-category') || '').split(' ');
         if (filter === 'all' || categories.includes(filter)) {
           card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 10);
+          window.requestAnimationFrame(() => card.classList.add('visible'));
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(12px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 200);
+          card.classList.remove('visible');
+          window.setTimeout(() => {
+            if (!card.classList.contains('visible')) {
+              card.style.display = 'none';
+            }
+          }, 450);
         }
       });
 
@@ -128,6 +171,20 @@ document.addEventListener('DOMContentLoaded', () => {
       tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'Vercel'],
       liveUrl: 'https://torquemototechkannur.vercel.app/',
       githubUrl: 'https://github.com/fayastm03'
+    },
+    hasi: {
+      title: 'Hasi Foods — E-Commerce Storefront',
+      image: 'assets/hasi-foods-preview2.png',
+      desc: 'Built a React.js storefront for Hasi Foods, a Kannur-based food and spice brand, with product browsing, product detail pages, brand storytelling, and WhatsApp ordering flows.',
+      features: [
+        'Responsive React.js and Next.js storefront for desktop and mobile',
+        'Product collection and detailed blend pages for rice flours and spices',
+        'WhatsApp ordering links for direct customer enquiries and purchases',
+        'Editorial brand sections covering sourcing, craft, and customer stories',
+        'Deployed live on Vercel'
+      ],
+      tags: ['React.js', 'Next.js', 'JavaScript', 'E-Commerce', 'Vercel'],
+      liveUrl: 'https://hasi-foods.vercel.app/'
     },
     chat: {
       title: 'Real-Time Chat — Messaging Application',
@@ -157,20 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
       liveUrl: 'https://github.com/fayastm03',
       githubUrl: 'https://github.com/fayastm03'
     },
-    rental: {
-      title: 'Car Rental — Vehicle Booking Application',
-      image: 'assets/car_rental_mockup.png',
-      desc: 'Built a mobile car rental application using Flutter, Firebase Authentication, and Cloud Firestore for real-time vehicle browsing, booking, and rental fleet management.',
-      features: [
-        'Real-time Firestore synchronization for vehicle availability and pricing',
-        'Secure Firebase Authentication with email and social sign-in',
-        'Intuitive date-range booking picker and vehicle category filtering',
-        'Clean MVVM / repository architecture with Flutter and Dart'
-      ],
-      tags: ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Mobile App'],
-      liveUrl: 'https://github.com/fayastm03',
-      githubUrl: 'https://github.com/fayastm03'
-    }
   };
 
   const projectModal = document.getElementById('projectModal');
@@ -361,23 +404,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --------------------------------------------------------------------------
-  // 9. Intersection Observer for Smooth Reveal Animations
+  // 9. Reusable Intersection Observer motion system
   // --------------------------------------------------------------------------
-  const revealElements = document.querySelectorAll('.project-card, .service-row, .exp-item, .skill-card');
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+  const revealGroups = [
+    { selector: '.work-section, .service-section, .experience-section, .skills-section, .contact-section', className: 'reveal-section' },
+    { selector: '.section-topbar, .contact-heading', className: 'reveal-heading' },
+    { selector: '.projects-grid .project-card, .service-accordion .service-row, .experience-timeline .exp-item, .skills-grid .skill-card', className: 'reveal stagger-item' },
+    { selector: '.project-media-wrap img, .service-mockup-card img', className: 'reveal-image' },
+    { selector: '.filter-pills-row, .contact-inner > .availability-pill, .contact-subtext, .contact-action-btn, .footer-bar, .footer-credit', className: 'reveal' },
+    { selector: '.experience-timeline', className: 'timeline-reveal' }
+  ];
 
-  revealElements.forEach((el) => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
+  const revealElements = [];
+  revealGroups.forEach(({ selector, className }) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      className.split(' ').forEach((name) => element.classList.add(name));
+      revealElements.push(element);
+    });
   });
+
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible', 'motion-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  } else {
+    revealElements.forEach((element) => element.classList.add('visible', 'motion-visible'));
+  }
 });
