@@ -1585,7 +1585,7 @@ img {
 
   .site-nav {
     height: 64px;
-    padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+    padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   }
 
   .brand-logo {
@@ -1606,9 +1606,10 @@ img {
   
   .hero-section {
     height: auto;
-    min-height: max(720px, 100svh);
-    padding-top: 72px;
-    padding-bottom: 24px;
+    min-height: auto;
+    max-height: none;
+    padding-top: calc(72px + env(safe-area-inset-top));
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1621,12 +1622,26 @@ img {
     left: auto;
     transform: none;
     width: 100%;
-    margin-top: 12px;
-    padding: 0 16px;
+    max-width: none;
+    margin-top: 24px;
+    padding: 0 24px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .greeting-left,
+  .greeting-center-gap {
+    display: none;
+  }
+
+  .greeting-right {
+    flex: none;
+    text-align: left;
   }
   
   .greeting-word {
-    font-size: 15vw;
+    font-size: clamp(64px, 20vw, 110px);
+    line-height: 0.9;
   }
   
   .greeting-center-gap {
@@ -1639,9 +1654,24 @@ img {
     bottom: auto;
     left: auto;
     transform: none;
-    height: 320px;
     width: 100%;
-    margin-top: 20px;
+    height: auto;
+    max-width: 100%;
+    margin-top: 36px;
+    -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-photo img {
+    width: min(78vw, 340px);
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
   
   .hero-mid-badge {
@@ -1650,8 +1680,10 @@ img {
     top: auto;
     left: auto;
     transform: none;
-    margin-top: 72px;
-    padding: 0 16px;
+    width: fit-content;
+    max-width: calc(100vw - 48px);
+    margin-top: 36px;
+    padding: 0 24px;
     z-index: 4;
   }
 
@@ -1667,10 +1699,17 @@ img {
     top: auto;
     right: auto;
     transform: none;
-    margin-top: 12px;
-    padding: 0 16px;
-    max-width: 250px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0 24px;
+    max-width: none;
     z-index: 4;
+  }
+
+  .hero-specialization {
+    max-width: 100%;
+    font-size: clamp(18px, 4.8vw, 20px);
+    line-height: 1.5;
   }
   
   .hero-bottom-left {
@@ -1678,14 +1717,16 @@ img {
     position: relative;
     bottom: auto;
     left: auto;
-    margin-top: 18px;
+    width: 100%;
+    margin-top: 32px;
     padding: 24px 16px 0;
     max-width: 100%;
     z-index: 4;
   }
   
   .hero-giant-title {
-    font-size: 14vw;
+    font-size: clamp(52px, 15vw, 88px);
+    line-height: 0.88;
   }
   
   .title-name {
@@ -1697,38 +1738,31 @@ img {
     position: relative;
     bottom: auto;
     right: auto;
-    padding: 8px 16px 8px;
+    width: 100%;
+    padding: 14px 16px 0 24px;
     z-index: 4;
   }
   
   .hero-giant-role {
-    font-size: 10vw;
+    font-size: clamp(36px, 11vw, 56px);
+    line-height: 0.9;
   }
 
-  .motion-ready .hero-greeting-frame {
-    transform: translateY(12px);
-  }
-
-  .motion-ready.hero-loaded .hero-greeting-frame {
-    transform: translateY(0);
-  }
-
+  /* Keep the mobile hero usable even when a browser pauses animations. */
+  .motion-ready .hero-greeting-frame,
   .motion-ready .hero-mid-badge,
-  .motion-ready .hero-mid-copy {
-    transform: translateY(10px);
+  .motion-ready .hero-mid-copy,
+  .motion-ready .hero-photo-wrapper,
+  .motion-ready .hero-bottom-left,
+  .motion-ready .hero-bottom-right {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 
-  .motion-ready.hero-loaded .hero-mid-badge,
-  .motion-ready.hero-loaded .hero-mid-copy {
-    transform: translateY(0);
-  }
-
-  .motion-ready .hero-photo-wrapper {
-    transform: translateY(18px) scale(1.04);
-  }
-
+  .motion-ready.hero-loaded .hero-greeting-frame,
   .motion-ready.hero-loaded .hero-photo-wrapper {
-    transform: translateY(0) scale(1);
+    transform: none;
   }
   
   .section {
@@ -1866,16 +1900,8 @@ img {
     font-size: 11vw;
   }
 
-  .hero-section {
-    min-height: max(720px, 100svh);
-  }
-
-  .hero-photo-wrapper {
-    height: 300px;
-  }
-
   .hero-mid-badge {
-    margin-top: 64px;
+    margin-top: 32px;
   }
 
   .availability-pill {
