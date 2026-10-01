@@ -343,6 +343,15 @@ img {
 }
 
 .mobile-nav-content {
+  transform: translateY(12px);
+  transition: transform var(--transition-normal);
+}
+
+.mobile-nav-overlay.open .mobile-nav-content {
+  transform: translateY(0);
+}
+
+.mobile-nav-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1148,27 +1157,6 @@ img {
   font-weight: 500;
 }
 
-.exp-hover-preview {
-  position: absolute;
-  left: 55%;
-  top: 50%;
-  transform: translateY(-50%) scale(0.9);
-  width: 130px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-  z-index: 5;
-}
-
-.exp-item:hover .exp-hover-preview {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
-
 /* ==========================================================================
    Toolkit / Skills Section
    ========================================================================== */
@@ -1650,6 +1638,7 @@ img {
     position: relative;
     bottom: auto;
     left: auto;
+    transform: none;
     height: 320px;
     width: 100%;
     margin-top: 20px;
@@ -1759,16 +1748,11 @@ img {
   }
 
   .filter-pills-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    margin-right: -20px;
-    padding-right: 20px;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    margin-right: 0;
+    padding-right: 0;
     padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-
-  .filter-pills-row::-webkit-scrollbar {
-    display: none;
   }
   
   .projects-grid {
@@ -1794,6 +1778,10 @@ img {
   .service-row.expanded .service-row-body {
     gap: 24px;
     padding: 24px 18px;
+  }
+
+  .service-row.expanded .service-body-right {
+    order: -1;
   }
 
   .service-body-title {
@@ -1834,9 +1822,22 @@ img {
     flex-direction: column;
     gap: 12px;
   }
-  
-  .exp-hover-preview {
-    display: none;
+
+  .exp-item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 4px;
+  }
+
+  .exp-main,
+  .exp-sub {
+    width: 100%;
+    max-width: none;
+  }
+
+  .exp-date {
+    align-self: flex-start;
   }
 }
 
