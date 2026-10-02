@@ -437,6 +437,11 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     revealElements.forEach((element) => revealObserver.observe(element));
+
+    // Release any elements missed during a fast scroll or a paused observer.
+    window.setTimeout(() => {
+      revealElements.forEach((element) => element.classList.add('visible', 'motion-visible'));
+    }, 1400);
   } else {
     revealElements.forEach((element) => element.classList.add('visible', 'motion-visible'));
   }

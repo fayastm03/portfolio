@@ -1579,13 +1579,9 @@ img {
 }
 
 @media (max-width: 768px) {
-  html {
-    overflow-x: hidden;
-  }
-
   .site-nav {
     height: 64px;
-    padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
+    padding: max(12px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   }
 
   .brand-logo {
@@ -1608,11 +1604,12 @@ img {
     height: auto;
     min-height: auto;
     max-height: none;
-    padding-top: calc(72px + env(safe-area-inset-top));
-    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+    padding: calc(64px + env(safe-area-inset-top)) clamp(20px, 5vw, 32px) calc(48px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: stretch;
+    overflow: visible;
   }
   
   .hero-greeting-frame {
@@ -1623,15 +1620,21 @@ img {
     transform: none;
     width: 100%;
     max-width: none;
-    margin-top: 24px;
-    padding: 0 24px;
+    margin-top: clamp(40px, 12vw, 70px);
+    padding: 0;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-direction: column;
   }
 
-  .greeting-left,
   .greeting-center-gap {
     display: none;
+  }
+
+  .greeting-left {
+    display: block;
+    flex: none;
+    text-align: left;
   }
 
   .greeting-right {
@@ -1657,14 +1660,17 @@ img {
     width: 100%;
     height: auto;
     max-width: 100%;
-    margin-top: 36px;
+    margin: 40px auto 0;
+    align-self: center;
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
   }
 
   .hero-photo {
-    width: 100%;
+    width: min(72vw, 330px);
     height: auto;
+    margin: 0 auto;
   }
 
   .hero-photo img {
@@ -1682,8 +1688,8 @@ img {
     transform: none;
     width: fit-content;
     max-width: calc(100vw - 48px);
-    margin-top: 36px;
-    padding: 0 24px;
+    margin-top: 28px;
+    padding: 0;
     z-index: 4;
   }
 
@@ -1700,9 +1706,9 @@ img {
     right: auto;
     transform: none;
     width: 100%;
-    margin-top: 24px;
-    padding: 0 24px;
-    max-width: none;
+    margin: 20px auto 0;
+    padding: 0;
+    max-width: 420px;
     z-index: 4;
   }
 
@@ -1718,8 +1724,8 @@ img {
     bottom: auto;
     left: auto;
     width: 100%;
-    margin-top: 32px;
-    padding: 24px 16px 0;
+    margin-top: 28px;
+    padding: 0;
     max-width: 100%;
     z-index: 4;
   }
@@ -1739,7 +1745,8 @@ img {
     bottom: auto;
     right: auto;
     width: 100%;
-    padding: 14px 16px 0 24px;
+    margin-top: 14px;
+    padding: 0;
     z-index: 4;
   }
   
@@ -1748,20 +1755,26 @@ img {
     line-height: 0.9;
   }
 
-  /* Keep the mobile hero usable even when a browser pauses animations. */
+  /* Mobile hero motion is progressive enhancement over the flow layout. */
   .motion-ready .hero-greeting-frame,
   .motion-ready .hero-mid-badge,
   .motion-ready .hero-mid-copy,
   .motion-ready .hero-photo-wrapper,
   .motion-ready .hero-bottom-left,
   .motion-ready .hero-bottom-right {
-    opacity: 1;
+    opacity: 0;
     animation: none;
-    transform: none;
+    transform: translateY(10px);
+    transition: opacity 600ms var(--ease-premium), transform 600ms var(--ease-premium);
   }
 
   .motion-ready.hero-loaded .hero-greeting-frame,
-  .motion-ready.hero-loaded .hero-photo-wrapper {
+  .motion-ready.hero-loaded .hero-mid-badge,
+  .motion-ready.hero-loaded .hero-mid-copy,
+  .motion-ready.hero-loaded .hero-photo-wrapper,
+  .motion-ready.hero-loaded .hero-bottom-left,
+  .motion-ready.hero-loaded .hero-bottom-right {
+    opacity: 1;
     transform: none;
   }
   
@@ -1931,25 +1944,31 @@ img {
   }
 }
 
-/* Subtle one-time scroll reveals */
+/* Subtle one-time scroll reveals. Hidden only after JS opts into motion. */
 .reveal,
 .reveal-section,
 .reveal-heading,
 .reveal-image {
-  opacity: 0;
-  transform: translateY(32px);
   transition: opacity 0.7s ease-out, transform 0.7s var(--ease-premium);
 }
 
-.reveal-section {
+.motion-ready .reveal,
+.motion-ready .reveal-section,
+.motion-ready .reveal-heading,
+.motion-ready .reveal-image {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.motion-ready .reveal-section {
   transform: translateY(25px);
 }
 
-.reveal-heading {
+.motion-ready .reveal-heading {
   transform: translateY(15px);
 }
 
-.reveal-image {
+.motion-ready .reveal-image {
   transform: translateY(10px) scale(0.98);
 }
 
@@ -1977,27 +1996,27 @@ img {
 .stagger-item:nth-child(9) { transition-delay: 720ms; }
 
 @media (max-width: 768px) {
-  .reveal,
-  .reveal-section,
-  .reveal-heading,
-  .reveal-image {
+  .motion-ready .reveal,
+  .motion-ready .reveal-section,
+  .motion-ready .reveal-heading,
+  .motion-ready .reveal-image {
     transform: translateY(20px);
     transition-duration: 600ms;
   }
 
-  .reveal-section {
+  .motion-ready .reveal-section {
     transform: translateY(18px);
   }
 
-  .reveal-heading {
+  .motion-ready .reveal-heading {
     transform: translateY(12px);
   }
 
-  .reveal-image {
+  .motion-ready .reveal-image {
     transform: translateY(8px) scale(0.99);
   }
 
-  .service-row.reveal {
+  .motion-ready .service-row.reveal {
     transform: translateX(20px);
   }
 }
